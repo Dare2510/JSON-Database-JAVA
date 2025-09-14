@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Main {
-    private static final File DB_FILE = new File("data/db.json"");
+    private static final File DB_FILE = new File("data/db.json");
     private static final ReadWriteLock LOCK = new ReentrantReadWriteLock();
 
     // Hilfsmethode: Wert aus verschachteltem JSON per Pfad auslesen
