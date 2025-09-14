@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Main {
-    private static final File DB_FILE = new File("C:/Users/Dare/IdeaProjects/JSON Database with Java/JSON Database with Java/task/src/server/data/db.json");
+    private static final File DB_FILE = new File("data/db.json"");
     private static final ReadWriteLock LOCK = new ReentrantReadWriteLock();
 
     // Hilfsmethode: Wert aus verschachteltem JSON per Pfad auslesen
@@ -34,7 +34,7 @@ public class Main {
         return current;
     }
 
-    // Hilfsmethode: Wert in verschachteltem JSON per Pfad setzen (neu erstellen falls nötig)
+    // Hilfsmethode: Wert in verschachteltem JSON per Pfad setzen 
     public static void setValueByPath(JsonObject root, List<String> path, JsonElement value) {
         JsonObject current = root;
         for (int i = 0; i < path.size(); i++) {
@@ -57,13 +57,13 @@ public class Main {
         for (int i = 0; i < path.size() - 1; i++) {
             String keyPart = path.get(i);
             if (!current.has(keyPart) || !current.get(keyPart).isJsonObject()) {
-                return false; // Pfad existiert nicht vollständig
+                return false; 
             }
             current = current.getAsJsonObject(keyPart);
         }
         String lastKey = path.get(path.size() - 1);
         if (!current.has(lastKey)) {
-            return false; // Schlüssel zum Löschen existiert nicht
+            return false; 
         }
         current.remove(lastKey);
         return true;
